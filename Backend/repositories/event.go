@@ -2,26 +2,23 @@ package repositories
 
 import (
 	"context"
-	"time"
 
 	"github.com/animesh_30/TicketWave/models"
+	"gorm.io/gorm"
 )
 
 type EventRepostitory struct {
-	db any
+	db *gorm.DB
 }
 
 func(r *EventRepostitory) GetMany(ctx context.Context) ([]*models.Event,error){
 	events := []*models.Event{}
 
-	events = append(events , &models.Event{
-		ID : "202151415156",
-		Name: "My Fav Horse",
-		Location : "Heart",
-		Date: 	time.Now(),
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	})
+	res := r.db.Model(&models.Event{}).Find(&events)
+
+	if res.Error != nil {
+		return nil,res.Error
+	}
 	return events,nil
 }
 func(r *EventRepostitory) GetOne(ctx context.Context, eventId string) (*models.Event,error){
@@ -31,7 +28,7 @@ func(r *EventRepostitory) CreateOne(ctx context.Context,event models.Event) (*mo
 	return nil,nil
 }
 
-func NewEventRepository(db any) models.EventRepostitory{
+func NewEventRepository(db *gorm.DB) models.EventRepostitory{
 	return & EventRepostitory{
 		db:db,
 	} 
