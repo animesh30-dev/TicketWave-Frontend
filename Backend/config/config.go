@@ -20,7 +20,7 @@ func NewEnvConfig() *EnvConfig {
 	err := godotenv.Load()
 
 	if err!= nil {
-		log.Fatalf("Unavle to load the .env file:%e" ,err)
+		log.Fatalf("Unable to load the .env file: %e" ,err)
 	}
 
 	config := &EnvConfig{}

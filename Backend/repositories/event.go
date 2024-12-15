@@ -7,65 +7,69 @@ import (
 	"gorm.io/gorm"
 )
 
-type EventRepostitory struct {
+type EventRepository struct {
 	db *gorm.DB
 }
 
-func(r *EventRepostitory) GetMany(ctx context.Context) ([]*models.Event,error){
-	event := []*models.Event{}
+func (r *EventRepository) GetMany(ctx context.Context) ([]*models.Event, error) {
+	events := []*models.Event{}
 
-	res := r.db.Model(&models.Event{}).Order("updated_at desc").Find(&event)
+	res := r.db.Model(&models.Event{}).Order("updated_at desc").Find(&events)
 
 	if res.Error != nil {
-		return nil,res.Error
+		return nil, res.Error
 	}
-	return event,nil
 
+	return events, nil
 }
-func(r *EventRepostitory) GetOne(ctx context.Context, eventId uint) (*models.Event,error){
+
+func (r *EventRepository) GetOne(ctx context.Context, eventId uint) (*models.Event, error) {
 	event := &models.Event{}
-	res := r.db.Model(event).Where("id=?",eventId).First(event)
+
+	res := r.db.Model(event).Where("id = ?", eventId).First(event)
 
 	if res.Error != nil {
-		return nil,res.Error
+		return nil, res.Error
 	}
-	return event,nil
+
+	return event, nil
 }
 
-func(r *EventRepostitory) CreateOne(ctx context.Context,event *models.Event) (*models.Event,error){
-	
+func (r *EventRepository) CreateOne(ctx context.Context, event *models.Event) (*models.Event, error) {
 	res := r.db.Model(event).Create(event)
 
 	if res.Error != nil {
-		return nil,res.Error
+		return nil, res.Error
 	}
-	return event,nil
+
+	return event, nil
 }
 
-func (r *EventRepostitory) UpdateOne(ctx context.Context , eventId uint , updateData map[string]interface{}) (*models.Event,error){
+func (r *EventRepository) UpdateOne(ctx context.Context, eventId uint, updateData map[string]interface{}) (*models.Event, error) {
 	event := &models.Event{}
 
-	updateRes := r.db.Model(event).Where ("id=?", eventId).Updates(updateData)
+	updateRes := r.db.Model(event).Where("id = ?", eventId).Updates(updateData)
 
 	if updateRes.Error != nil {
-		return nil,updateRes.Error
+		return nil, updateRes.Error
 	}
 
-	getRes := r.db.Where("id = ?" , eventId).First(event)
-	if getRes.Error != nil{
-		return nil,getRes.Error
+	getRes := r.db.Model(event).Where("id = ?", eventId).First(event)
+
+	if getRes.Error != nil {
+		return nil, getRes.Error
 	}
-	return event,nil
+
+	return event, nil
 }
 
-func (r *EventRepostitory) DeleteOne(ctx context.Context , eventId uint) error{
-	res := r.db.Delete(&models.Event{} , eventId)
-	
+func (r *EventRepository) DeleteOne(ctx context.Context, eventId uint) error {
+	res := r.db.Delete(&models.Event{}, eventId)
 	return res.Error
 }
 
-func NewEventRepository(db *gorm.DB) models.EventRepostitory{
-	return & EventRepostitory{
-		db:db,
-	} 
+func NewEventRepository(db *gorm.DB) models.EventRepository {
+	return &EventRepository{
+		db: db,
+	}
 }
