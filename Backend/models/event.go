@@ -32,8 +32,7 @@ func (e *Event) AfterFind(db *gorm.DB) (err error) {
 	if res := baseQuery.Count(&e.TotalTicketsPurchased); res.Error != nil {
 		return res.Error
 	}
-
-	if res := baseQuery.Where("entered =?", true).Count(&e.TotalTicketsEntered); res.Error != nil {
+	if res := baseQuery.Where("entered = ?", true).Count(&e.TotalTicketsEntered); res.Error != nil {
 		return res.Error
 	}
 	return nil

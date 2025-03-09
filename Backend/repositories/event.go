@@ -24,6 +24,7 @@ func (r *EventRepository) GetMany(ctx context.Context) ([]*models.Event, error) 
 }
 
 func (r *EventRepository) GetOne(ctx context.Context, eventId uint) (*models.Event, error) {
+
 	event := &models.Event{}
 
 	res := r.db.Model(event).Where("id = ?", eventId).First(event)
@@ -33,6 +34,7 @@ func (r *EventRepository) GetOne(ctx context.Context, eventId uint) (*models.Eve
 	}
 
 	return event, nil
+
 }
 
 func (r *EventRepository) CreateOne(ctx context.Context, event *models.Event) (*models.Event, error) {

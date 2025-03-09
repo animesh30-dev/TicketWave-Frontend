@@ -26,7 +26,7 @@ func (r *AuthRepository) RegisterUser(ctx context.Context, registerData *models.
 	return user, nil
 }
 
-func (r *AuthRepository) GetUSer(ctx context.Context, query interface{}, args ...interface{}) (*models.User, error) {
+func (r *AuthRepository) GetUser(ctx context.Context, query interface{}, args ...interface{}) (*models.User, error) {
 	user := &models.User{}
 
 	if res := r.db.Model(user).Where(query, args...).First(user); res.Error != nil {

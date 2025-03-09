@@ -27,10 +27,9 @@ func (h *EventHandler) GetMany(ctx *fiber.Ctx) error {
 	}
 
 	return ctx.Status(fiber.StatusOK).JSON(&fiber.Map{
-		"data":   events,
+		"data":    events,
 		"status":  "success",
 		"message": "",
-		
 	})
 }
 
@@ -88,6 +87,7 @@ func (h *EventHandler) CreateOne(ctx *fiber.Ctx) error {
 }
 
 func (h *EventHandler) UpdateOne(ctx *fiber.Ctx) error {
+
 	eventId, _ := strconv.Atoi(ctx.Params("eventId"))
 	updateData := make(map[string]interface{})
 

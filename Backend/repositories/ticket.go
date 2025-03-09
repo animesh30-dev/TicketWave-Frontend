@@ -56,10 +56,10 @@ func (r *TicketRepository) UpdateOne(ctx context.Context, userId uint, ticketId 
 		return nil, updateRes.Error
 	}
 
-	return r.GetOne(ctx, userId, ticket.ID)
+	return r.GetOne(ctx, userId, ticketId)
 }
 
-func NewTicketRepository(db *gorm.DB) models.TicketRespository {
+func NewTicketRepository(db *gorm.DB) models.TicketRepository {
 	return &TicketRepository{
 		db: db,
 	}

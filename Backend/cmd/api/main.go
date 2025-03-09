@@ -33,10 +33,9 @@ func main() {
 	handlers.NewAuthHandler(server.Group("/Auth"), authService)
 
 	//routes
-	privateRoutes := server.Use(middlewares.AuthProteted(db))
+	privateRoutes := server.Use(middlewares.AuthProtected(db))
 
 	//handlers
-
 	handlers.NewEventHandler(privateRoutes.Group("/event"), eventRepostitory)
 	handlers.NewTicketHandler(privateRoutes.Group("/ticket"), ticketRepository)
 

@@ -15,7 +15,7 @@ type Ticket struct {
 	UpdatedAt time.Time `json:"updatedAt"`
 }
 
-type TicketRespository interface {
+type TicketRepository interface {
 	GetMany(ctx context.Context, userId uint) ([]*Ticket, error)
 	GetOne(ctx context.Context, userId uint, ticketId uint) (*Ticket, error)
 	CreateOne(ctx context.Context, userId uint, ticket *Ticket) (*Ticket, error)

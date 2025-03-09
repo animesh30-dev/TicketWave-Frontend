@@ -12,7 +12,7 @@ import (
 )
 
 type TicketHandler struct {
-	repository models.TicketRespository
+	repository models.TicketRepository
 }
 
 func (h *TicketHandler) GetMany(ctx *fiber.Ctx) error {
@@ -143,7 +143,7 @@ func (h *TicketHandler) ValidateOne(ctx *fiber.Ctx) error {
 	})
 }
 
-func NewTicketHandler(router fiber.Router, repository models.TicketRespository) {
+func NewTicketHandler(router fiber.Router, repository models.TicketRepository) {
 	handler := &TicketHandler{
 		repository: repository,
 	}

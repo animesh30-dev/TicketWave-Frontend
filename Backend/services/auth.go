@@ -9,7 +9,6 @@ import (
 
 	"github.com/animesh_30/TicketWave/models"
 	"github.com/animesh_30/TicketWave/utils"
-
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
@@ -20,7 +19,7 @@ type AuthService struct {
 }
 
 func (s *AuthService) Login(ctx context.Context, loginData *models.AuthCredentials) (string, *models.User, error) {
-	user, err := s.repository.GetUSer(ctx, "email = ?", loginData.Email)
+	user, err := s.repository.GetUser(ctx, "email = ?", loginData.Email)
 
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -33,10 +32,10 @@ func (s *AuthService) Login(ctx context.Context, loginData *models.AuthCredentia
 		return "", nil, fmt.Errorf("invalid credentials")
 	}
 
-	claims :=jwt.MapClaims{
-		"id" : user.ID,
-		"role" : user.Role,
-		"exp" : time.Now().Add(time.Hour * 168).Unix(), 
+	claims := jwt.MapClaims{
+		"id":   user.ID,
+		"role": user.Role,
+		"exp":  time.Now().Add(time.Hour * 168).Unix(),
 	}
 
 	token, err := utils.GenerateJWT(claims, jwt.SigningMethodHS256, os.Getenv("JWT_SECRET"))
@@ -53,10 +52,10 @@ func (s *AuthService) Register(ctx context.Context, registerData *models.AuthCre
 		return "", nil, fmt.Errorf("please, provide a valid email to register")
 	}
 
-	if _, err := s.repository.GetUSer(ctx, "email = ?", registerData.Email); !errors.Is(err, gorm.ErrRecordNotFound) {
+	if _, err := s.repository.GetUser(ctx, "email = ?", registerData.Email); !errors.Is(err, gorm.ErrRecordNotFound) {
 		return "", nil, fmt.Errorf("the user email is already in use")
 	}
-	
+
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(registerData.Password), bcrypt.DefaultCost)
 	if err != nil {
 		return "", nil, err
