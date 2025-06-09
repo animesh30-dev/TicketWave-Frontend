@@ -13,7 +13,7 @@ Welcome to TicketApp! This is a modern, cross-platform mobile application for ma
 * **Seamless Navigation:** Effortlessly navigate through the app using the powerful **Expo Router**.
 * **Booking System:** A straightforward and secure process for booking tickets for desired events.
 * **Ticket Management:** View and manage all your booked tickets in one place.
-* * **QR-code** QR-based scanning of tickets to reduce friction in ticket verification.
+* **QR-code** QR-based scanning of tickets to reduce friction in ticket verification.
 * **Cross-Platform:** Single codebase for both iOS and Android, thanks to React Native and Expo.
 
 ## 🛠️ Tech Stack
@@ -43,7 +43,7 @@ Make sure you have the following installed on your machine:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/animesh30-dev/TicketWave-Frontend.git](https://github.com/animesh30-dev/TicketWave-Frontend.git)
+    git clone https://github.com/animesh30-dev/TicketWave-Frontend.git
     cd TicketWave-Frontend
     ```
 
