@@ -15,6 +15,14 @@ Welcome to TicketApp! This is a modern, cross-platform mobile application for ma
 * **Ticket Management:** View and manage all your booked tickets in one place.
 * **QR-code** QR-based scanning of tickets to reduce friction in ticket verification.
 * **Cross-Platform:** Single codebase for both iOS and Android, thanks to React Native and Expo.
+  
+## Backend
+
+* **Framework:** Go with Fiber
+* **Database:** PostgreSQL
+* **ORM:** GORM
+* **Containerization:** Docker
+* **Link to Backend Repository:** [TicketWave Backend](https://github.com/animesh30-dev/TicketWave)
 
 ## 🛠️ Tech Stack
 
