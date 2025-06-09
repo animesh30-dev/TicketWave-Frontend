@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# TicketApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/373af58b-8efd-4f2b-b5cb-1977a943ad92" width="700">
+</p>
 
-## Get started
+Welcome to TicketApp! This is a modern, cross-platform mobile application for managing and booking tickets for events. Built with React Native and Expo, it provides a seamless and intuitive user experience.
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+* **User Authentication:** Secure user sign-up and login functionality to manage personal profiles and booking history.
+* **Event Listing:** Browse through a comprehensive list of available events with different dates and venues.
+* **Seamless Navigation:** Effortlessly navigate through the app using the powerful **Expo Router**.
+* **Booking System:** A straightforward and secure process for booking tickets for desired events.
+* **Ticket Management:** View and manage all your booked tickets in one place.
+* * **QR-code** QR-based scanning of tickets to reduce friction in ticket verification.
+* **Cross-Platform:** Single codebase for both iOS and Android, thanks to React Native and Expo.
 
-2. Start the app
+## 🛠️ Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+* **Core:** React Native, Expo SDK
+* **Routing:** Expo Router
+* **Authentication:** JWT Authentication using golang
+* **UI Components:** React Native core components,custom UI components and Vector icons.
 
-In the output, you'll find options to open the app in a
+## 🚀 Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+Make sure you have the following installed on your machine:
 
-When you're ready, run:
+* [Node.js](https://nodejs.org/) 
+* [Git](https://git-scm.com/)
+* [Expo CLI](https://docs.expo.dev/get-started/installation/)
+    ```bash
+    npm install -g expo-cli
+    ```
+* Expo Go app on your [iOS](https://apps.apple.com/us/app/expo-go/id982107779) or [Android](https://play.google.com/store/apps/details?id=host.exp.exponent) device.
 
-```bash
-npm run reset-project
-```
+### Installation
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/animesh30-dev/TicketWave-Frontend.git](https://github.com/animesh30-dev/TicketWave-Frontend.git)
+    cd TicketWave-Frontend
+    ```
 
-## Learn more
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
 
-To learn more about developing your project with Expo, look at the following resources:
+### Running the Application
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1.  **Start the development server:**
+    ```bash
+    npx expo start
+    ```
 
-## Join the community
+2.  **Scan the QR code:**
+    Open the Expo Go app on your mobile device and scan the QR code displayed in your terminal or browser. This will bundle the app and run it on your device.
+    
+## Screenshots
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dbb27a0e-bdff-41b0-a1be-3766612d2b9b" width="200" alt="Login Screen">
+  <img src="https://github.com/user-attachments/assets/1052d918-2dd4-4e07-b146-eee3edaa37f3" width="200" alt="Events List">
+  <img src="https://github.com/user-attachments/assets/20d4d3da-b357-41ee-9a1b-985e0032f886" width="200" alt="QR code">
+</p>
